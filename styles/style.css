@@ -444,8 +444,9 @@ footer p {
 /* Add a media query for mobile screens */
 @media screen and (max-width: 768px) {
     .gallery-content .image {
-        max-width: 150px; /* Adjust the maximum width for smaller screens */
-        max-height: 150px; /* Adjust the maximum height for smaller screens */
+        margin: 5px;
+        max-width: 120px; /* Adjust the maximum width for smaller screens */
+        max-height: 120px; /* Adjust the maximum height for smaller screens */
 
     }
     .gallery-content .header {
@@ -454,13 +455,13 @@ footer p {
     padding: 20px 0;
     text-align: center;
     
-
 }
+
+
 }
 
 
 
 /* ---------------------------------- Style for the sketches ends-------------------*/
-
 
 
