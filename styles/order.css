@@ -1,0 +1,144 @@
+
+
+.form-container {
+    max-width: 80%;
+    margin: 20px auto; /* Added margin top and bottom, auto for horizontal centering */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Vertically align the form groups to the top */
+    flex-wrap: wrap; /* Allow items to wrap to the next row if needed */
+}
+
+.form-group {
+    flex: 1;
+    margin: 0 10px 10px 0; /* Added margin to create space between form elements */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.form-group p {
+	  color: #555;
+	  text-align: left;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.required-field {
+            border: 2px solid red; /* Red border for required fields */
+        }
+
+
+/* Style for the total price display */
+#totalPrice {
+    font-weight: bold; /* Bold font weight for total price */
+    font-size: 18px; /* Font size for total price */
+    color: green; /* Text color for total price */
+    text-align: left;
+}
+
+/* Define the styles for disabled buttons */
+button:disabled {
+    background-color: #ccc; /* Change the background color to gray */
+    cursor: not-allowed; /* Change the cursor style to not-allowed */
+}
+/* Center-align the button */
+.button-container {
+    text-align: center;
+}
+
+.upi-icon {
+    width: 60px; /* Adjust the width to your preference */
+    height: 24px; /* Adjust the height to your preference */
+    margin-right: 8px; /* Add spacing between the image and button */
+    vertical-align: middle; /* Align the image vertically with the button text */
+}
+
+
+/* Add responsive styles for mobile screens */
+@media (max-width: 768px) {
+    /* Adjust form container width and margins */
+    .form-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    /* Center-align form elements */
+    .form-group {
+        text-align: center;
+    }
+
+    /* Increase font size for form labels and inputs */
+    label, select, input {
+        font-size: 16px;
+    }
+
+    /* Reduce padding and spacing */
+    .form-row {
+        display: block;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+
+
+/* CSS for Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* CSS for Messages */
+.message {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
