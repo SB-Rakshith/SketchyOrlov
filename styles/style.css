@@ -444,14 +444,14 @@ footer p {
 /* Add a media query for mobile screens */
 @media screen and (max-width: 768px) {
     .gallery-content .image {
-        margin: 5px;
+        margin:5px;
         max-width: 120px; /* Adjust the maximum width for smaller screens */
         max-height: 120px; /* Adjust the maximum height for smaller screens */
 
     }
     .gallery-content .header {
     background-color:  whitesmoke;
-    color: #000 ;
+    color: #ff9900;  
     padding: 20px 0;
     text-align: center;
     
