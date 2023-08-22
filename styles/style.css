@@ -313,7 +313,8 @@ h2 {
   
   /* SECTIONS */
 .headline {
-height: 110px;  background-size: contain;
+height: 200px; 
+background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
