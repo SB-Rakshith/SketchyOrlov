@@ -1,0 +1,170 @@
+/* specific-style.css */
+/* Modern and visually appealing styles for specific content */
+
+/* Style for the specific content container */
+.specific-content {
+    background-color: white; /* White background */
+    padding: 20px; /* Padding around the specific content */
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px 0; /* Margin above and below the specific content */
+    text-align: center; /* Center align all text */
+    z-index: 1; /* Lower z-index to keep it below the navbar */
+}
+/* Style for the content wrapper */
+.content-wrapper {
+    margin: 0 auto; /* Center the content */
+    max-width: 85%; /* Maximum width of the content */
+    padding: 0 20px; /* Add margin on left and right */
+}
+
+/* Style for the title (first line) */
+.title {
+    font-family: monospace;
+    font-size: 24px; /* Increased font size */
+    color: #333; /* Text color */
+    margin-bottom: 15px; /* Space below the title */
+    font-weight: bold;
+}
+
+/* Style for highlighted text */
+.highlight-text {
+    font-family: monospace;
+    color: #8F3A84; /* Highlighted text color */
+    font-weight: bold; /* Bold font weight */
+}
+
+/* Style for the unordered list within the specific content */
+.specific-content ul {
+    list-style: disc; /* Remove list bullets */
+    padding-left: 0; /* Reset left padding to 0 */
+    text-align: left; /* Left align text within the list */
+    margin-top: 15px; /* Add space between title and list */
+}
+
+/* Style for list items within the specific content */
+.specific-content li {
+    margin-bottom: 15px; /* Space between list items */
+    font-size: 16px; /* Font size for list items */
+    color: #555; /* Text color for list items */
+    text-align: left; /* Left align text within li elements */
+}
+
+
+/* Style for links within the specific content */
+.specific-content a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #4285f4; /* Link color */
+    font-weight: bold; /* Bold font weight for links */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Style for links on hover within the specific content */
+.specific-content a:hover {
+    text-decoration: underline; /* Underline links on hover */
+    color: #ff6b6b; /* Change link color on hover */
+}
+
+
+@media only screen and (max-width: 720px) { 
+ /* Style for the specific content container */
+.specific-content {
+    background-color: white; /* White background */
+    padding: 10px; /* Padding around the specific content */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px 0; /* Margin above and below the specific content */
+    text-align: center; /* Center align all text */
+    z-index: 1; /* Lower z-index to keep it below the navbar */
+}   
+/* Style for the content wrapper */
+.content-wrapper {
+    margin: 0 auto; /* Center the content */
+    max-width: 100%; /* Maximum width of the content */
+    padding: 0 20px; /* Add margin on left and right */
+}
+
+/* Style for the title (first line) */
+.title {
+    font-size: 16px; /* Increased font size */
+    font-family: monospace;
+    color: #333; /* Text color */
+    margin-bottom: 15px; /* Space below the title */
+    font-weight: bold;
+}
+.specific-content li {
+    margin-bottom: 10px; /* Space between list items */
+    font-size: 10px; /* Font size for list items */
+    font-weight: bold;
+    color: #555; /* Text color for list items */
+    text-align: left; /* Left align text within li elements */
+}
+
+
+
+/* ---------------------------------- Style for the sketches-------------------*/
+
+
+.gallery-content {
+    /* Define styles for the container if needed */
+}
+
+/* Target elements within the "gallery.html" section */
+.gallery-content .header {
+    background-color:  whitesmoke;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 24px; /* Increased font size */
+    color:  #ff9900; /* Text color */
+
+}
+
+.gallery-content .header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+
+.gallery-content .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gallery-content .image {
+    margin: 20px;
+    max-width: 400px; /* Maximum width of 300px */
+    max-height: 4000px; /* Maximum height of 300px */
+    border: 2px solid #b3b3af; 
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery-content .image:hover {
+    transform: scale(1.05); /* Adjust the scale factor as needed */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+
+/* Add a media query for mobile screens */
+@media screen and (max-width: 768px) {
+    .gallery-content .image {
+        max-width: 120px; /* Adjust the maximum width for smaller screens */
+        max-height: 120px; /* Adjust the maximum height for smaller screens */
+
+    }
+    .gallery-content .header {
+    background-color:  whitesmoke;
+    color: ff9900 ;
+    padding: 20px 0;
+    text-align: center;
+    
+
+}
+}
+
+
+
+/* ---------------------------------- Style for the sketches ends-------------------*/
