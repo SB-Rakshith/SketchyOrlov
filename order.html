@@ -36,93 +36,135 @@
 
     <div class="form-container">
         <h2>Order Portrait Art</h2>
-        <form id="orderForm" action="https://script.google.com/macros/s/AKfycby15MuAUfU3L2vZ46TIUBKDiM4cQIbHX1tdocg9dihoW_l9LuDhlDPpjjNvGh4fYR8/exec" method="POST">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="numberOfFaces">Number of Face(s)</label>
-                    <select id="numberOfFaces" name="numberOfFaces" required>
-                        <option value="">Select</option>
-                        <option value="single">Single Face</option>
-                        <option value="two">Two Faces</option>
+       <form id="orderForm" enctype="multipart/form-data">
+        <!-- Sketch Details Section -->
+        <div class="skecthDetailsSection" id="sketchDetailsSection">
+        <div class="form-row" >
+            <div class="form-group">
+                <label for="numberOfFaces">Number of Face(s)</label>
+                <select type="number" id="numOfFaces" name="numOfFaces" required>
+                    <option value="">Select</option>
+                    <option value="single">Single Face</option>
+                    <option value="two">Two Faces</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="artType">Choose Your Art Type</label>
+                <select id="artType" name="artType" required>
+                    <option value="">Select</option>
+                    <option value="normal-sketch">Normal Sketch</option>
+                    <option value="realistic-charcoal-sketch">Realistic Charcoal Sketch</option>
+                    <option value="coffee-portrait-painting" disabled>Coffee Portrait Painting</option>
+                    <option value="watercolor-painting" disabled>Watercolor Painting</option>
+                    <option value="colorpencil-sketch"disabled>Colorpencil Sketch</option>
+                    <option value="charcoal-sketch-on-wood"disabled>Charcoal Sketch on Wood</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="artType">Choose Your Art Type</label>
-                    <select id="artType" name="artType" required>
-                        <option value="">Select</option>
-                        <option value="normal-sketch">Normal Sketch</option>
-                        <option value="realistic-charcoal-sketch">Realistic Charcoal Sketch</option>
-                        <option value="coffee-portrait-painting">Coffee Portrait Painting</option>
-                        <option value="watercolor-painting">Watercolor Painting</option>
-                        <option value="colorpencil-sketch">Colorpencil Sketch</option>
-                        <option value="charcoal-sketch-on-wood">Charcoal Sketch on Wood</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="artSize">Size options</label>
-                    <select id="artSize" name="artSize" required>
-                        <option value="">Select</option>
+                    <label for="sizeOption">Size Option:</label>
+                    <select id="sizeOption" name="sizeOption" required >
                         <option value="8x12">8x12 (A4)</option>
-                        <option value="12x16">12x16 (A3)</option>
-                        <option value="16x24">16x24 (A2)</option>
+                        <option value="12x16" disabled>12x16 (A3)</option>
+                        <option value="16x24" disabled>16x24 (A2)</option>
                     </select>
                 </div>
             </div>
 
+        <div class="form-row">
             <div class="form-group">
-                <label for="orientation">Orientation</label>
+                <label for="orientation" >Orientation</label>
                 <select id="orientation" name="orientation" required>
-                    <option value="">Select</option>
                     <option value="artist-choice">Artist Choice</option>
                     <option value="vertical">Vertical</option>
                     <option value="horizontal">Horizontal</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label id="totalPriceLabel" for="totalPrice" name="totalPrice" class="center-label">Total Price (Include of All Taxes)</label>
+                <p id="totalPriceValue" class="error-message">&#8377;0</p>
+            </div>
+        </div>
+
+            
+            <div class="button-container">
+    <button type="button" id="switchToDelhiveryForm" disabled>Next: Delivery Details</button>
+</div>
+  
+    </div>
+
+        <div class="deliveryDetailsSection" id="deliveryDetailsSection" style="display: none;">
+        <div class="form-row" >
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
 
             <div class="form-group">
-                <label id="totalPriceLabel" for="totalPrice">Total Price (Include of All Taxes)</label>
-                <p id="totalPrice" class="error-message">&#8377;0</p>
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="tel" id="mobileNo" name="mobileNo" required>
             </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobileNumber">Mobile Number</label>
-                    <input type="tel" id="mobileNumber" name="mobileNumber" required>
-                </div>
             </div>
-
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+           <div class="form-group">
+                <label for="pincode">Pincode:</label>
+                <input type="text" id="pincode" name="pincode" required>
+            </div>
+        </div>
             <div class="form-group">
                 <label for="deliveryAddress">Delivery Address</label>
-                <input type="text" id="deliveryAddress" name="deliveryAddress" required>
+                <input type="text" id="deliveryAddress"  rows="4"  name="deliveryAddress" required>
             </div>
+          
 
+
+        <div class="form-row"> 
+               <div class="form-group">
+                <label for="totalPriceDelivery" class="center-label">"Please make the payment using UPI or QR code and upload the receipt."</label>
+                <p id="totalPriceDelivery" class="error-message">&#8377;0</p>
+            </div>
+        <div class="qr-container">   
+            <div class="upi-button-container">
+                <button type="button" id="payWithUpi" class="payment-button">Pay with UPI</button>
+            </div>
+           
+            <!-- Button to show QR code -->
+            <button type="button" id="showQrButton">Show QR Code</button>
+
+            <!-- The QR code modal -->
+            <div id="qrModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <img src="https://drive.google.com/uc?export=view&id=1Xk1lO3YPlbSWmoYE1WgVvFk1nnoSaAFY" alt="QR Code">
+                </div>
+        </div>
+    </div>
+
+</div>
+        <div class="form-row">
             <div class="form-group">
-                <label for="uploadPhoto">Upload Photo</label>
+                <label for="uploadPhoto">Upload Sketch Img</label>
                 <input type="file" id="uploadPhoto" name="uploadPhoto" accept="image/*" required>
             </div>
-
-            <div class="upi-button-container">
-                <img src="https://www.narendrasisodiya.com/Universal-UPI-QR-Code-Generator/upi-icon-black.png" alt="UPI Icon" class="upi-icon">
-                <button type="button" id="payWithUpi" class="payment-button" disabled>Pay with UPI</button>
-            </div>
-
             <div class="form-group">
                 <label for="uploadPaymentScreenshot">Upload Payment Screenshot</label>
                 <input type="file" id="uploadPaymentScreenshot" name="uploadPaymentScreenshot" accept="image/*" required>
             </div>
+        </div>
+            <!-- Buttons to switch between sections -->
+       <div class="qr-container">  
+        <button type="button" id="switchToSketchForm" style="display: none;">Previous: Sketch Details</button>
 
-            <div class="button-container">
-                <button type="submit" id="submitButton" disabled>Submit Order</button>
-            </div>
-
-        </form>
+        <!-- Submit button -->
+        <button type="submit" id="submitButton" style="display: none;">Submit Order</button>
+    </div>
+    </div>
+    </form>
     </div>
 
     <!-- Footer Starts -->
@@ -144,10 +186,8 @@
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="./script/script.js"></script>    
-    <script src="./script/order.js"></script>
+     <script src="./script/order.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
-
-
   
 </body>
 </html>
