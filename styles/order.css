@@ -32,6 +32,13 @@ label {
     font-weight: bold;
     color: #555;
 }
+
+/* Center-align the label text for elements with the .center-label class */
+.center-label {
+    text-align: center;
+    width: 100%; /* Optional: To ensure label takes up the full width */
+}
+
 .form-group p {
 	  color: #555;
 	  text-align: left;
@@ -44,6 +51,7 @@ select, input {
     border-radius: 5px;
     font-size: 16px;
 }
+
 
 button {
     background-color: #007bff;
@@ -65,13 +73,18 @@ button:hover {
 
 
 /* Style for the total price display */
-#totalPrice {
+#totalPriceValue {
     font-weight: bold; /* Bold font weight for total price */
     font-size: 18px; /* Font size for total price */
     color: green; /* Text color for total price */
-    text-align: left;
+    text-align: center;
 }
-
+#totalPriceDelivery {
+    font-weight: bold; /* Bold font weight for total price */
+    font-size: 18px; /* Font size for total price */
+    color: green; /* Text color for total price */
+    text-align: center;
+}
 /* Define the styles for disabled buttons */
 button:disabled {
     background-color: #ccc; /* Change the background color to gray */
@@ -82,19 +95,90 @@ button:disabled {
     text-align: center;
 }
 
+
 .upi-icon {
     width: 60px; /* Adjust the width to your preference */
     height: 24px; /* Adjust the height to your preference */
-    margin-right: 8px; /* Add spacing between the image and button */
+    margin-right: 8px; /* Add spacing between the image and button *
     vertical-align: middle; /* Align the image vertically with the button text */
 }
+
+/* Styles for the QR container */
+.qr-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Align buttons to the left and right */
+    align-items: center; /* Vertically center its content */
+    margin-top: 20px;
+    margin-bottom: 20px; /* Adjust as needed for spacing */
+}
+
+/* Styles for the "Show QR Code" button */
+#showQrButton {
+    font-size: 16px; /* Adjust as needed */
+    padding: 10px 20px; /* Adjust as needed */
+    background-color: #007BFF; /* Add your desired background color */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Styles for the "Pay with UPI" button (same as before) */
+.upi-button-container {
+    /* Add any additional styles for the "Pay with UPI" button */
+}
+
+/* Styles for the modal (same as before) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 80%;
+    height: 50%;
+    max-height: 80%;
+    text-align: center; /* Center the image horizontally */
+}
+
+.modal-content img {
+    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+    max-height: 100%; /* Ensure the image doesn't exceed the container's height */
+}
+
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
 
 
 /* Add responsive styles for mobile screens */
 @media (max-width: 768px) {
     /* Adjust form container width and margins */
     .form-container {
-        width: 90%;
+        max-width: 98%;
         margin: 20px auto;
     }
 
@@ -119,26 +203,3 @@ button:disabled {
 }
 
 
-
-/* CSS for Overlay */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-/* CSS for Messages */
-.message {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-}
