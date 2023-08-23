@@ -118,7 +118,7 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
     payload["totalPrice"] = totalPriceValue;
 
     // Send the payload to the Google Apps Script web app
-    fetch("https://script.google.com/macros/s/AKfycbyVRW5rionlgCqyNyij6vjRHOt1nvrcllagmLIFBBuSmJY72dgyfSpIbotjWRsFb9pk/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbwMygMxJvYdNQNF8GoiMtcBmhBZwYdZdqIPMQda8bSzndMjfDoJsO2WQeJkgc5sNWtP/exec", {
         method: "POST",
         body: JSON.stringify(payload)
     })
