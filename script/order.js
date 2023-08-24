@@ -8,31 +8,32 @@ function updateTotalAmount() {
     // Calculate total amount (customize this calculation)
     let totalAmount = 0; // Initial amount
 
-    if (numberOfFaces === "single") {
+    if (numberOfFaces === "Single") {
         totalAmount += 999; // Add additional amount based on selection
-    } else if (numberOfFaces === "two") {
+    } else if (numberOfFaces === "Two") {
         totalAmount += 1199; // Add additional amount based on selection
     }
-
-    if (artType === "normal-sketch") {
-        totalAmount += 0; // Add additional amount based on selection
-    } else if (artType === "realistic-charcoal-sketch") {
-        totalAmount += 200; // Add additional amount based on selection
-    } else if (artType === "coffee-portrait-painting") {
+    else if (numberOfFaces === "Multi") {
         totalAmount += 1299; // Add additional amount based on selection
-    } else if (artType === "watercolor-painting") {
-        totalAmount += 999; // Add additional amount based on selection
-    } else if (artType === "colorpencil-sketch") {
+    }
+
+    if (artType === "Realistic Charcoal Sketch") {
+        totalAmount += 0; // Add additional amount based on selection
+    } else if (artType === "Realistic Graphite Sketch") {
+        totalAmount += 299; // Add additional amount based on selection
+    } else if (artType === "Artist Choice") {
+        totalAmount += 200; // Add additional amount based on selection
+    } else if (artType === "Colorpencil Sketch") {
         totalAmount += 799; // Add additional amount based on selection
-    } else if (artType === "charcoal-sketch-on-wood") {
+    } else if (artType === "Charcoal Sketch on Wood") {
         totalAmount += 1999; // Add additional amount based on selection
     }
 
-    if (artSize === "8x12") {
+    if (artSize === "A4   (12 x 8 inches, Delivery in 5days)") {
         totalAmount += 0; // No additional cost for this size
-    } else if (artSize === "12x16") {
+    } else if (artSize === "A3   (12 x 18 inches, Delivery in 10days)") {
         totalAmount += 499; // Add additional amount based on selection
-    } else if (artSize === "16x24") {
+    } else if (artSize === "A5   (12 x 8 inches, Delivery in 6days)") {
         totalAmount += 999; // Add additional amount based on selection
     }
 
@@ -96,45 +97,148 @@ updateTotalAmount();
     // Add event listener to the "Pay with UPI" button
     document.getElementById("payWithUpi").addEventListener("click", payWithUPI);
 
-
-
-
-
-// submitting data to google sheet.
-document.getElementById("orderForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    var form = e.target;
-    var formData = new FormData(form);
-
-    // Create a payload with the form data
-    var payload = {};
-    formData.forEach(function(value, key) {
-        payload[key] = value;
+//---------------------------------------------------------------------------SUBMISSION------------------------------.
+ function submitForm(formData) {
+    Swal.fire({
+        title: 'Please Wait',
+        text: 'Submitting your order...',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
     });
 
-    // Get the total price value from the paragraph element
-    var totalPriceValue = document.getElementById("totalPriceValue").textContent;
-    payload["totalPrice"] = totalPriceValue;
+    // Calculate the total price
+    var totalPriceElement = document.getElementById("totalPriceDelivery");
+    var totalAmount = parseFloat(totalPriceElement.textContent.replace("₹", "").trim());
 
-    // Send the payload to the Google Apps Script web app
-    fetch("https://script.google.com/macros/s/AKfycbwMygMxJvYdNQNF8GoiMtcBmhBZwYdZdqIPMQda8bSzndMjfDoJsO2WQeJkgc5sNWtP/exec", {
-        method: "POST",
-        body: JSON.stringify(payload)
+    // Include the ₹ symbol and total price in the form data
+    formData.append("totalPriceDelivery", "₹" + totalAmount);
+
+    // Specify the URL for form submission
+    let url = "https://script.google.com/macros/s/AKfycbzmj-R3eAZBc5JKCPTZ36Grvdsh9gCm06k8_QAHUuC3uSC4gRcMJ_gdqkpzYUpbpDk/exec";
+
+    fetch(url, {
+        method: 'POST',
+        body: formData
     })
-    .then(function(response) {
+    .then(function (response) {
         if (response.ok) {
-            alert("Order Sent Succesfully!");
-            form.reset();
+             Swal.close();
+             Swal.fire({
+                title: 'Success',
+                text: 'Order submitted successfully. You will receive a confirmation email soon with order number. ',
+                icon: 'success',
+                showCancelButton: false, // Hide the "Cancel" button
+                allowOutsideClick: false,
+                confirmButtonText: 'OK', // Change the button text to "OK"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("orderForm").reset(); // Reset the form
+                    window.location.reload(); // Reload the webpage
+                }
+            });
         } else {
-            alert("An error occurred. Please try again.");
+            Swal.close();
+
+                    // Show an error message
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Error submitting order. Please try again.',
+                        icon: 'error',
+                    });
         }
     })
-    .catch(function(error) {
-        alert("An error occurred. Please try again.");
+    .catch(function (error) {
+        Swal.close();
+
+                // Show an error message
+                Swal.fire({
+                    title: 'Error',
+                    text: 'An error occurred. Please try again.',
+                    icon: 'error',
+                });
         console.error(error);
     });
+}
+
+
+// Add an event listener to the form submission
+document.getElementById("orderForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, submit it!',
+        cancelButtonText: 'Cancel', // Change the cancel button text
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If the user confirms, call the handleFileUploads function
+            let url = "https://script.google.com/macros/s/AKfycbzmj-R3eAZBc5JKCPTZ36Grvdsh9gCm06k8_QAHUuC3uSC4gRcMJ_gdqkpzYUpbpDk/exec";
+            let form = document.querySelector("#orderForm"); // Change to #orderForm to select the form element
+            handleFileUploads(url, form);
+            var formData = new FormData(e.target);
+            submitForm(formData);
+        } else {
+            // If the user cancels, do nothing or provide feedback
+            Swal.fire('Cancelled', 'Your order was not submitted.', 'info' );
+        }
+    });
 });
+
+// Function to handle file uploads
+function handleFileUploads(url, form) {
+    let fileInput1 = document.querySelector("#uploadPhoto");
+    let fileInput2 = document.querySelector("#uploadPaymentRecipt");
+
+    let fr1 = new FileReader();
+    let fr2 = new FileReader();
+
+    fr1.addEventListener('loadend', () => {
+        let res1 = fr1.result;
+        let spt1 = res1.split("base64,")[1];
+
+        fr2.addEventListener('loadend', () => {
+            let res2 = fr2.result;
+            let spt2 = res2.split("base64,")[1];
+
+            let obj1 = {
+                base64: spt1,
+                type: fileInput1.files[0].type,
+                name: fileInput1.files[0].name
+            };
+
+            let obj2 = {
+                base64: spt2,
+                type: fileInput2.files[0].type,
+                name: fileInput2.files[0].name
+            };
+
+            // Combine both objects into an array
+            let objs = [obj1, obj2];
+
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(objs) // Send both objects as an array
+            })
+            .then(r => r.text())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+        });
+
+        fr2.readAsDataURL(fileInput2.files[0]);
+    });
+
+    fr1.readAsDataURL(fileInput1.files[0]);
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -248,3 +352,7 @@ window.addEventListener("click", function(event) {
         qrModal.style.display = "none";
     }
 });
+
+
+
+ 
