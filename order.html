@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./styles/style.css"> <!-- Global CSS -->
     <link rel="stylesheet" href="./styles/order.css"> <!-- Specific Content CSS -->
     <link rel="icon" href="img/falcon.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
     <div class="page-wrapper">
@@ -41,44 +43,45 @@
         <div class="skecthDetailsSection" id="sketchDetailsSection">
         <div class="form-row" >
             <div class="form-group">
-                <label for="numberOfFaces">Number of Face(s)</label>
+                <label for="numberOfFaces">Number of Face(s):<span style="color: red;">*</span></label>
                 <select type="number" id="numOfFaces" name="numOfFaces" required>
-                    <option value="">Select</option>
-                    <option value="single">Single Face</option>
-                    <option value="two">Two Faces</option>
+                    <option value="" disabled="" selected="">Num of Faces</option>
+                    <option value="Single">Single Face</option>
+                    <option value="Two">Two Faces</option>
+                    <option value="Multi">Morethan Two Faces</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="artType">Choose Your Art Type</label>
+                <label for="artType"> Art Type:<span style="color: red;">*</span></label>
                 <select id="artType" name="artType" required>
-                    <option value="">Select</option>
-                    <option value="normal-sketch">Normal Sketch</option>
-                    <option value="realistic-charcoal-sketch">Realistic Charcoal Sketch</option>
-                    <option value="coffee-portrait-painting" disabled>Coffee Portrait Painting</option>
-                    <option value="watercolor-painting" disabled>Watercolor Painting</option>
-                    <option value="colorpencil-sketch"disabled>Colorpencil Sketch</option>
-                    <option value="charcoal-sketch-on-wood"disabled>Charcoal Sketch on Wood</option>
+                    <option value="" disabled="" selected="">Select Artwork Type</option>
+                    <option value="Realistic Charcoal Sketch">Realistic Charcoal Sketch</option>
+                    <option value="Realistic Graphite Sketch" >Realistic Graphite Sketch</option>
+                    <option value="Artist Choice" >Artist Choice</option>
+                    <option value="Colorpencil Sketch"disabled>Colorpencil Sketch</option>
+                    <option value="Charcoal Sketch on Wood"disabled>Charcoal Sketch on Wood</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="sizeOption">Size Option:</label>
+                    <label for="sizeOption">Artwork Size:*</label>
                     <select id="sizeOption" name="sizeOption" required >
-                        <option value="8x12">8x12 (A4)</option>
-                        <option value="12x16" disabled>12x16 (A3)</option>
-                        <option value="16x24" disabled>16x24 (A2)</option>
+                        <option value="" disabled="" selected="">Select Artwork Size:<span style="color: red;">*</span></option>
+                        <option value="A4   (12 x 8 inches, Delivery in 5days)">A4  (12 x 8 inches, Delivery in 5days)</option>
+                        <option value="A3   (12 x 18 inches, Delivery in 10days)">A3    (12 x 18 inches, Delivery in 10days)</option>
+                        <option value="A5   (12 x 8 inches, Delivery in 6days)">A5  (12 x 8 inches, Delivery in 6days)</option>
                     </select>
                 </div>
             </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="orientation" >Orientation</label>
-                <select id="orientation" name="orientation" required>
-                    <option value="artist-choice">Artist Choice</option>
-                    <option value="vertical">Vertical</option>
-                    <option value="horizontal">Horizontal</option>
+                <label for="orientation" >Orientation:</label>
+                <select id="orientation" name="orientation" >
+                    <option value="Artist Choice">Artist Choice</option>
+                    <option value="Vertical">Vertical</option>
+                    <option value="Horizontal">Horizontal</option>
                 </select>
             </div>
             <div class="form-group">
@@ -97,32 +100,32 @@
         <div class="deliveryDetailsSection" id="deliveryDetailsSection" style="display: none;">
         <div class="form-row" >
             <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" required>
+                <label for="fullName">Full Name:<span style="color: red;">*</span></label>
+                <input type="text" id="fullName" placeholdere="Full Name*" name="fullName" required>
             </div>
 
             <div class="form-group">
-                <label for="mobileNumber">Mobile Number</label>
+                <label for="mobileNumber">Mobile Number:<span style="color: red;">*</span></label>
                 <input type="tel" id="mobileNo" name="mobileNo" required>
             </div>
             </div>
         <div class="form-row">
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email">Email:<span style="color: red;">*</span></label>
                 <input type="email" id="email" name="email" required>
             </div>
            <div class="form-group">
-                <label for="pincode">Pincode:</label>
+                <label for="pincode">Pincode:<span style="color: red;">*</span></label>
                 <input type="text" id="pincode" name="pincode" required>
             </div>
         </div>
             <div class="form-group">
-                <label for="deliveryAddress">Delivery Address</label>
+                <label for="deliveryAddress">Delivery Address:<span style="color: red;">*</span></label>
                 <input type="text" id="deliveryAddress"  rows="4"  name="deliveryAddress" required>
+
+
             </div>
           
-
-
         <div class="form-row"> 
                <div class="form-group">
                 <label for="totalPriceDelivery" class="center-label">"Please make the payment using UPI or QR code and upload the receipt."</label>
@@ -148,24 +151,68 @@
 </div>
         <div class="form-row">
             <div class="form-group">
-                <label for="uploadPhoto">Upload Sketch Img</label>
-                <input type="file" id="uploadPhoto" name="uploadPhoto" accept="image/*" required>
+                 <label for="deliveryDate">Delivery Date:<span style="color: red;">*</span></label>
+                <input type="date" id="deliveryDate" name="deliveryDate" placeholder="When do you need delivery?" required>
+            </div>
+             <div class="form-group">
+                <label for="uploadPhoto">Upload Sketch Img:<span style="color: red;">*</span></label>
+                <input type="file" id="uploadPhoto" name="uploadPhoto" accept="image/*"  required>
             </div>
             <div class="form-group">
-                <label for="uploadPaymentScreenshot">Upload Payment Screenshot</label>
-                <input type="file" id="uploadPaymentScreenshot" name="uploadPaymentScreenshot" accept="image/*" required>
+                <label for="uploadPaymentRecipt">Upload Payment Screenshot:<span style="color: red;">*</span></label>
+                <input type="file" id="uploadPaymentRecipt" name="uploadPaymentScreenshot" accept="image/*" required>
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="specialInstructions">Special Instructions (Optional):</label>
+                <input type="text" id="specialInstructions" rows="4" name="specialInstructions" >
+            </div>
+            <div class="form-group">
+                 <label for="agreeToShowcase">Do you agree for the concert to showcase the sketch on the website?<span style="color: red;">*</span></label>
+                <select id="agreeToShowcase" name="agreeToShowcase" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+  
+            </div>
+
             <!-- Buttons to switch between sections -->
        <div class="qr-container">  
-        <button type="button" id="switchToSketchForm" style="display: none;">Previous: Sketch Details</button>
+        <button type="button" id="switchToSketchForm" style="display: none;">Previous </button>
 
         <!-- Submit button -->
         <button type="submit" id="submitButton" style="display: none;">Submit Order</button>
+</div>
     </div>
     </div>
     </form>
     </div>
+
+
+
+
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Confirm Order Submission</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to submit this order?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmSubmit">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- Footer Starts -->
     <footer>
@@ -188,6 +235,5 @@
     <script src="./script/script.js"></script>    
      <script src="./script/order.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
-  
 </body>
 </html>
