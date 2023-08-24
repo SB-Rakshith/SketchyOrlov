@@ -172,8 +172,6 @@ button:disabled {
 }
 
 
-
-
 /* Add responsive styles for mobile screens */
 @media (max-width: 768px) {
     /* Adjust form container width and margins */
