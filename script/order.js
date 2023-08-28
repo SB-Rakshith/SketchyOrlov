@@ -4,6 +4,9 @@ function updateTotalAmount() {
     const numberOfFaces = document.getElementById("numOfFaces").value;
     const artType = document.getElementById("artType").value;
     const artSize = document.getElementById("sizeOption").value;
+    const frame = document.getElementById("frame").value;
+    const frameType = document.getElementById("frameType").value;
+
 
     // Calculate total amount (customize this calculation)
     let totalAmount = 0; // Initial amount
@@ -37,11 +40,21 @@ function updateTotalAmount() {
         totalAmount += 999; // Add additional amount based on selection
     }
 
+    if (frame === "Yes") {
+    if (frameType === "Fiber") {
+        totalAmount += 250; // No additional cost for this size
+    } else if (artSize === "Glass") {
+        totalAmount += 499; // Add additional amount based on selection
+    } 
+    }
+
     // Update the total amount text
     document.getElementById("totalPriceValue").textContent = "\u20B9" + totalAmount;
           
     // Update the total amount text in the delivery details section
     document.getElementById("totalPriceDelivery").textContent = "\u20B9" + totalAmount;
+
+    document.getElementById("qrTotalAmount").textContent = "\u20B9" + totalAmount;
 }
 
 // Event listeners for input fields
@@ -53,15 +66,67 @@ document.getElementById("sizeOption").addEventListener("change", updateTotalAmou
 updateTotalAmount();
 
 
-// Function to handle the "Pay with UPI" button click
+//------------------------------------------------------------------------PAYMENT AND QR ------------------
+
+
+ document.addEventListener("DOMContentLoaded", function() {
+    const generateQRCodeButton = document.getElementById("showQrButton");
+    const qrCodeImage = document.getElementById("qrCodeImage");
+    const qrModal = document.getElementById("qrModal");
+    const closeButton = document.getElementsByClassName("close")[0];
+
+    generateQRCodeButton.addEventListener("click", function() {
+        const totalAmount = document.getElementById("totalPriceDelivery").textContent.replace("₹", "");
+        const upiPaymentLink = `upi://pay?pa=poojang147-1@oksbi&pn=SketchyOrlov&am=${totalAmount}`;
+
+        // Generate the QR code image URL
+        const qrCodeImageUrl = generateQRCodeImage(upiPaymentLink);
+
+        // Set the src attribute of the QR code image
+        qrCodeImage.src = qrCodeImageUrl;
+
+        // Show the QR code image
+        qrCodeImage.style.display = "block";
+
+        // Hide the "Generate QR Code" button
+        generateQRCodeButton.style.display = "none";
+        qrModal.style.display = "block";
+    });
+
+    window.addEventListener("click", function(event) {
+    if (event.target == qrModal) {
+        qrModal.style.display = "none";
+    }
+    });
+
+    closeButton.addEventListener("click", function() {
+    qrModal.style.display = "none";
+    generateQRCodeButton.style.display = "block"
+    });
+
+
+    function generateQRCodeImage(data) {
+        const size = 200; // Set the size of the QR code image
+        return `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(data)}&size=${size}x${size}`;
+    }
+
+    // Function to handle the "Pay with UPI" button click
     function payWithUPI() {
-        const totalAmount = document.getElementById("totalPrice").textContent.replace("₹", "");
+        const totalAmount = document.getElementById("totalPriceDelivery").textContent.replace("₹", "");
+        const upiPaymentLink = `upi://pay?pa=poojang147-1@oksbi&pn=SketchyOrlov&am=${totalAmount}`;
 
-        // Generate the UPI payment link
-        const upiPaymentLink = `upi://pay?pa=9902462472@ybl&pn=rakshithsb&am=${totalAmount}`;
+        // Create an anchor element to trigger the UPI payment link
+        const anchor = document.createElement("a");
+        anchor.href = upiPaymentLink;
+        anchor.target = "_blank"; // Open the link in a new tab
 
-        // Redirect to the UPI payment link
-        window.location.href = upiPaymentLink;
+        // Trigger a click event on the anchor element to open the UPI payment link
+        const clickEvent = new MouseEvent("click", {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+        });
+        anchor.dispatchEvent(clickEvent);
     }
 
     // Add event listeners to form elements for updating total amount
@@ -75,33 +140,16 @@ updateTotalAmount();
 
     // Add event listener to the "Pay with UPI" button
     document.getElementById("payWithUpi").addEventListener("click", payWithUPI);
-    // Function to handle the "Pay with UPI" button click
-    function payWithUPI() {
-        const totalAmount = document.getElementById("totalPriceDelivery").textContent.replace("₹", "");
-        const upiPaymentLink = `upi://pay?pa=poojang147-1@oksbi&pn=SketchyOrlov&am=${totalAmount}`;
+});
 
-        // Create an anchor element to trigger the UPI payment link
-        const anchor = document.createElement("a");
-        anchor.href = upiPaymentLink;
-        anchor.target = "_blank"; // Open the link in a new tab
-       
-      // Trigger a click event on the anchor element to open the UPI payment link
-        const clickEvent = new MouseEvent("click", {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-        });
-        anchor.dispatchEvent(clickEvent);
-    }
-
-    // Add event listener to the "Pay with UPI" button
-    document.getElementById("payWithUpi").addEventListener("click", payWithUPI);
 
 //---------------------------------------------------------------------------SUBMISSION------------------------------.
+
+
  function submitForm(formData) {
     Swal.fire({
         title: 'Please Wait',
-        text: 'Submitting your order...',
+        text: 'Submitting your order details...',
         icon: 'info',
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -115,7 +163,7 @@ updateTotalAmount();
     formData.append("totalPriceDelivery", "₹" + totalAmount);
 
     // Specify the URL for form submission
-    let url = "https://script.google.com/macros/s/AKfycbzmj-R3eAZBc5JKCPTZ36Grvdsh9gCm06k8_QAHUuC3uSC4gRcMJ_gdqkpzYUpbpDk/exec";
+    let url = "https://script.google.com/macros/s/AKfycbwyvapReMHoP6VdSr-wXJaa7rXcbwBdmBqcM2OHew_TNc06PcB6U8SEa2V3HtaLeaE/exec";
 
     fetch(url, {
         method: 'POST',
@@ -123,20 +171,14 @@ updateTotalAmount();
     })
     .then(function (response) {
         if (response.ok) {
-             Swal.close();
-             Swal.fire({
-                title: 'Success',
-                text: 'Order submitted successfully. You will receive a confirmation email soon with order number. ',
-                icon: 'success',
-                showCancelButton: false, // Hide the "Cancel" button
-                allowOutsideClick: false,
-                confirmButtonText: 'OK', // Change the button text to "OK"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById("orderForm").reset(); // Reset the form
-                    window.location.reload(); // Reload the webpage
-                }
-            });
+             Swal.update({
+                        title: 'Please Wait',
+                        text: 'Uploading your Photos...',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                    });
+            
         } else {
             Swal.close();
 
@@ -167,25 +209,25 @@ document.getElementById("orderForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the default form submission
 
     Swal.fire({
-        title: 'Are you sure?',
+        title: 'Confirm the order?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, submit it!',
+        confirmButtonText: 'Yes, Confrim it!',
         cancelButtonText: 'Cancel', // Change the cancel button text
     }).then((result) => {
         if (result.isConfirmed) {
             // If the user confirms, call the handleFileUploads function
-            let url = "https://script.google.com/macros/s/AKfycbzmj-R3eAZBc5JKCPTZ36Grvdsh9gCm06k8_QAHUuC3uSC4gRcMJ_gdqkpzYUpbpDk/exec";
+            let url = "https://script.google.com/macros/s/AKfycbwyvapReMHoP6VdSr-wXJaa7rXcbwBdmBqcM2OHew_TNc06PcB6U8SEa2V3HtaLeaE/exec";
             let form = document.querySelector("#orderForm"); // Change to #orderForm to select the form element
             handleFileUploads(url, form);
             var formData = new FormData(e.target);
             submitForm(formData);
         } else {
             // If the user cancels, do nothing or provide feedback
-            Swal.fire('Cancelled', 'Your order was not submitted.', 'info' );
+            Swal.fire('Cancelled', 'Your order was not Confrimed.', 'info' );
         }
     });
 });
@@ -226,8 +268,40 @@ function handleFileUploads(url, form) {
                 body: JSON.stringify(objs) // Send both objects as an array
             })
             .then(r => r.text())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
+            .then(data => {
+                if (data === 'Both Images Uploaded') {
+                    Swal.close();
+                    Swal.fire({
+                        title: 'Order placed successfully',
+                        text: 'You will receive a confirmation email soon with an order number',
+                        icon: 'success',
+                        showCancelButton: false,
+                        allowOutsideClick: false,
+                        confirmButtonText: 'OK',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById("orderForm").reset();
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    Swal.close();
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Some Images Failed to Upload',
+                        icon: 'error',
+                    });
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                Swal.close();
+                Swal.fire({
+                    title: 'Error',
+                    text: 'An error occurred uploading the photos. Please try again.',
+                    icon: 'error',
+                });
+            });
         });
 
         fr2.readAsDataURL(fileInput2.files[0]);
@@ -236,10 +310,26 @@ function handleFileUploads(url, form) {
     fr1.readAsDataURL(fileInput1.files[0]);
 }
 
+// -----------------------------------------------------------------------------------------------------------------------
+
 
 
 //--------------------------------------------------------------------------------------------------------------------------
 
+// Get the select element for frame
+var frameSelect = document.getElementById("frame");
+
+// Get the container for frame type
+var frameTypeContainer = document.getElementById("frameTypeContainer");
+
+// Add an event listener to the frame select element
+frameSelect.addEventListener("change", function () {
+    if (frameSelect.value === "Yes") {
+        frameTypeContainer.style.display = "block";
+    } else {
+        frameTypeContainer.style.display = "none";
+    }
+});
 
 
 
@@ -248,28 +338,59 @@ const numOfFacesInput = document.getElementById("numOfFaces");
 const artTypeInput = document.getElementById("artType");
 const sizeOptionInput = document.getElementById("sizeOption");
 const orientationInput = document.getElementById("orientation");
+const frameInput = document.getElementById("frame");
+const frameTypeInput = document.getElementById("frameType"); // Add this line
+const totalPriceInput = document.getElementById("totalPrice"); // Add this line
 const fullNameInput = document.getElementById("fullName");
+const mobileNoInput = document.getElementById("mobileNo"); // Add this line
 const emailInput = document.getElementById("email");
 const deliveryAddressInput = document.getElementById("deliveryAddress");
 const pincodeInput = document.getElementById("pincode");
+const deliveryDateInput = document.getElementById("deliveryDate");
+const agreeToShowcaseInput = document.getElementById("agreeToShowcase");
+const uploadPhotoInput = document.getElementById("uploadPhoto");
+const uploadReceiptInput = document.getElementById("uploadReceipt");
+
 const switchToDelhiveryFormButton = document.getElementById("switchToDelhiveryForm");
 const switchToSketchFormButton = document.getElementById("switchToSketchForm");
 const submitButton = document.getElementById("submitButton");
 
-// Function to check if the first four inputs are filled
-function areFirstFourInputsFilled() {
+
+function areInputsFilled() {
     return (
         numOfFacesInput.value !== "" &&
         artTypeInput.value !== "" &&
         sizeOptionInput.value !== "" &&
-        orientationInput.value !== ""
+        orientationInput.value !== "" &&
+        frameInput.value !== "" &&
+        frameTypeInput.value !== "" && // Check if frame type is filled
+        fullNameInput.value !== "" &&
+        mobileNoInput.value !== "" && // Check if mobile number is filled
+        emailInput.value !== "" &&
+        deliveryAddressInput.value !== "" &&
+        pincodeInput.value !== "" &&
+        deliveryDateInput.value !== "" &&
+        agreeToShowcaseInput.value !== "" 
     );
 }
 
-// Add an event listener to check input validity and enable/disable the button
-[numOfFacesInput, artTypeInput, sizeOptionInput, orientationInput].forEach((input) => {
+// Function to check if the first four inputs are filled
+function areFirstFiveInputsFilled() {
+    return (
+        numOfFacesInput.value !== "" &&
+        artTypeInput.value !== "" &&
+        sizeOptionInput.value !== "" &&
+        orientationInput.value !== "" &&
+        frameInput.value !== ""
+    );
+}
+
+
+
+// Add an event listener to check input validity and enable/disable the "Next to Delivery Detail" button
+[numOfFacesInput, artTypeInput, sizeOptionInput, orientationInput, frameInput].forEach((input) => {
     input.addEventListener("change", function() {
-        if (areFirstFourInputsFilled()) {
+        if (areFirstFiveInputsFilled()) {
             switchToDelhiveryFormButton.removeAttribute("disabled");
         } else {
             switchToDelhiveryFormButton.setAttribute("disabled", "disabled");
@@ -277,28 +398,17 @@ function areFirstFourInputsFilled() {
     });
 });
 
-// Function to check if all form fields are filled
-function areAllFieldsFilled() {
-    return (
-        numOfFacesInput.value !== "" &&
-        artTypeInput.value !== "" &&
-        sizeOptionInput.value !== "" &&
-        orientationInput.value !== "" &&
-        fullNameInput.value !== "" &&
-        emailInput.value !== "" &&
-        deliveryAddressInput.value !== "" &&
-        pincodeInput.value !== ""
-    );
-}
 
 // Add an event listener to check field validity and enable/disable the "Submit" button
 document.getElementById("orderForm").addEventListener("input", function() {
-    if (areAllFieldsFilled()) {
+    if (areInputsFilled()  ) {
         submitButton.removeAttribute("disabled");
     } else {
         submitButton.setAttribute("disabled", "disabled");
     }
 });
+
+
 
 // Event listeners for switching between sections
 switchToDelhiveryFormButton.addEventListener("click", function() {
@@ -330,29 +440,3 @@ switchToSketchFormButton.addEventListener("click", function() {
     this.style.display = "none";
 });
 
-
-// Get the modal and the button to open it
-var qrModal = document.getElementById("qrModal");
-var showQrButton = document.getElementById("showQrButton");
-var closeButton = document.getElementsByClassName("close")[0];
-
-// Show the modal when the button is clicked
-showQrButton.addEventListener("click", function() {
-    qrModal.style.display = "block";
-});
-
-// Close the modal when the close button is clicked
-closeButton.addEventListener("click", function() {
-    qrModal.style.display = "none";
-});
-
-// Close the modal if the user clicks outside of it
-window.addEventListener("click", function(event) {
-    if (event.target == qrModal) {
-        qrModal.style.display = "none";
-    }
-});
-
-
-
- 
