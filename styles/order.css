@@ -61,10 +61,55 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+
 }
 
 button:hover {
     background-color: #0056b3;
+}
+/* Define the styles for disabled buttons */
+button:disabled  {
+    background-color: #ccc; /* Change the background color to gray */
+    cursor: not-allowed; /* Change the cursor style to not-allowed */
+}
+/* Center-align the button */
+.button-container {
+    text-align: center;
+}
+
+/* "Show QR Code" button style */
+.showQrButton {
+    background-color: #FF5733; /* Orange */
+    color: white;
+}
+
+/* "Pay with UPI" button style */
+#payWithUpi {
+    background-color: #3498db; /* Blue */
+    color: white;
+}
+
+/* "Previous" button style */
+#switchToSketchForm {
+    background-color: #E74C3C; /* Red */
+    color: white;
+}
+
+/* "Confirm Order" button style */
+#submitButton {
+    background-color: #27AE60; /* Green */
+    color: white;
+}
+#submitButton:disabled {    
+    color: white;
+    background-color: #ccc; /* Change the background color to gray */
+    cursor: not-allowed;
+}
+/* Hover effect for all buttons */
+button:hover {
+    /* Change text color on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
 }
 
 .required-field {
@@ -85,15 +130,7 @@ button:hover {
     color: green; /* Text color for total price */
     text-align: center;
 }
-/* Define the styles for disabled buttons */
-button:disabled {
-    background-color: #ccc; /* Change the background color to gray */
-    cursor: not-allowed; /* Change the cursor style to not-allowed */
-}
-/* Center-align the button */
-.button-container {
-    text-align: center;
-}
+
 
 
 .upi-icon {
@@ -149,18 +186,19 @@ button:disabled {
     transform: translate(-50%, -50%);
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
-    max-width: 80%;
-    height: 50%;
-    max-height: 80%;
+    width: 60%; /* Adjust the width as needed */
+    height: 60%; /* Adjust the height as needed */
     text-align: center; /* Center the image horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .modal-content img {
     max-width: 100%; /* Ensure the image doesn't exceed the container's width */
     max-height: 100%; /* Ensure the image doesn't exceed the container's height */
+    margin: 0 auto; /* Center the image horizontally within the container */
 }
-
 
 .close {
     position: absolute;
@@ -171,12 +209,53 @@ button:disabled {
     cursor: pointer;
 }
 
+/* Style the QR code content */
+#qrCodeContent {
+    text-align: center;
+    color: #333;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.modal-content p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: black;
+    font-weight: bolder;
+}
+
+/* Style the UPI logos */
+#upiLogos {
+    margin-top: 15px;
+    overflow: hidden;
+}
+#qrCodeImage {
+    margin-top: 15px;
+}
+#upiLogos img {
+    max-width: 200px;
+    height: auto;
+}
+/* CSS to style the QR total amount */
+.total-amount {
+    color:green; /* Replace 'YourColorHere' with your desired text color */
+    font-weight: bold; /* Optional: Make the text bold */
+}
+
+
+
+
 
 /* Add responsive styles for mobile screens */
 @media (max-width: 768px) {
     /* Adjust form container width and margins */
     .form-container {
-        max-width: 98%;
+        max-width: 95%;
         margin: 20px auto;
     }
 
