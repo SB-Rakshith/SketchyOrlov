@@ -65,9 +65,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="sizeOption">Artwork Size:*</label>
+                    <label for="sizeOption">Artwork Size:<span style="color: red;">*</span></label>
                     <select id="sizeOption" name="sizeOption" required >
-                        <option value="" disabled="" selected="">Select Artwork Size:<span style="color: red;">*</span></option>
+                        <option value="" disabled="" selected="">Select Artwork Size</option>
                         <option value="A4   (12 x 8 inches, Delivery in 5days)">A4  (12 x 8 inches, Delivery in 5days)</option>
                         <option value="A3   (12 x 18 inches, Delivery in 10days)">A3    (12 x 18 inches, Delivery in 10days)</option>
                         <option value="A5   (12 x 8 inches, Delivery in 6days)">A5  (12 x 8 inches, Delivery in 6days)</option>
@@ -77,19 +77,36 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label for="orientation" >Orientation:</label>
+                <label for="orientation" >Orientation (Optional):</label>
                 <select id="orientation" name="orientation" >
                     <option value="Artist Choice">Artist Choice</option>
                     <option value="Vertical">Vertical</option>
                     <option value="Horizontal">Horizontal</option>
                 </select>
             </div>
+          
+            <div class="form-group">
+                    <label for="frame">Do you want to frame for this sketch?<span style="color: red;">*</span></label>
+                    <select id="frame" name="frame" required>
+                        <option value="" disabled="" selected="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+            <div class="form-group" id="frameTypeContainer" style="display: none;">
+                    <label for="frameType">Type of frame:<span style="color: red;">*</span></label>
+                    <select id="frameType" name="frameType">
+                        <option value="Fiber">Fiber</option>
+                        <option value="Glass">Glass</option>
+                    </select>
+                </div>
+          </div>
             <div class="form-group">
                 <label id="totalPriceLabel" for="totalPrice" name="totalPrice" class="center-label">Total Price (Include of All Taxes)</label>
                 <p id="totalPriceValue" class="error-message">&#8377;0</p>
             </div>
-        </div>
-
+      
             
             <div class="button-container">
     <button type="button" id="switchToDelhiveryForm" disabled>Next: Delivery Details</button>
@@ -142,16 +159,23 @@
             <!-- The QR code modal -->
             <div id="qrModal" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <img src="https://drive.google.com/uc?export=view&id=1Xk1lO3YPlbSWmoYE1WgVvFk1nnoSaAFY" alt="QR Code">
+                    <span class="close" id="closeModal">&times;</span>
+                    <div id="qrCodeContent">
+                        <p>Scan the QR on any UPI app to make the payment.</p>
+                        <img id="qrCodeImage" alt="QR Code">
+                        <p>Total Amount: <span id="qrTotalAmount" class="total-amount">&#8377;0.00</span></p>
+                        <div id="upiLogos">
+                            <img src="https://e-kendra.in/wp-content/uploads/2022/08/0_BIy_CblCTVoOl5Zg.png" alt="Google Pay Logo"> 
+                        </div>
+                    </div>
                 </div>
-        </div>
+            </div>
     </div>
 
 </div>
         <div class="form-row">
             <div class="form-group">
-                 <label for="deliveryDate">Delivery Date:<span style="color: red;">*</span></label>
+                 <label for="deliveryDate"> Request Delivery Date:<span style="color: red;">*</span></label>
                 <input type="date" id="deliveryDate" name="deliveryDate" placeholder="When do you need delivery?" required>
             </div>
              <div class="form-group">
@@ -182,36 +206,13 @@
         <button type="button" id="switchToSketchForm" style="display: none;">Previous </button>
 
         <!-- Submit button -->
-        <button type="submit" id="submitButton" style="display: none;">Submit Order</button>
+        <button type="submit" id="submitButton" style="display: none;">Confirm Order</button>
 </div>
     </div>
     </div>
     </form>
     </div>
 
-
-
-
-
-<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmationModalLabel">Confirm Order Submission</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to submit this order?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="confirmSubmit">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <!-- Footer Starts -->
