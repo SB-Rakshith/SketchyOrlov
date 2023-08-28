@@ -10,33 +10,58 @@
   <link rel="stylesheet" href="./styles/style.css">
   <link rel="stylesheet" href="./styles/index.css"> <!-- Specific Content CSS -->
   <link rel="icon" href="img/falcon.png" type="image/x-icon">
-
-
+<style>
+</style>
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="page-wrapper">
- <div class="nav-wrapper">
-      <div class="grad-bar"></div>
-
-  <nav class="navbar">
-    <img src="img/logo.png" alt="Sketchy Orlov">
-    <div class="menu-toggle" id="mobile-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+   <div class="nav-wrapper">
+        <div class="grad-bar"></div>
+        <nav class="navbar">
+          <img src="img/logo.png" alt="Sketchy Orlov">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="nav no-search">
+            <li class="nav-item active"><a href="index.html">Home</a></li>
+            <li class="nav-item order "><a href="order.html">Order Potrait</a></li>
+            <li class="nav-item "><a href="about.html">About us</a></li>
+            <li class="nav-item "><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
     </div>
-    <ul class="nav no-search">
-      <li class="nav-item active"><a href="index.html">Home</a></li>
-      <li class="nav-item order "><a href="order.html">Order Potrait</a></li>
-      <li class="nav-item "><a href="about.html">About us</a></li>
-      <li class="nav-item "><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  </div>
+ 
+    <div id="loader-wrapper">
+      <div id="loader">
+        <div class="line"></div>
+      </div>
+    </div>
 
-  <div class="headline"  id="headline-section"> </div>
+    <div id="banner-slidder">
+      <div class="slider-wrapper">
+      <figure class="slider" >
+        <figure>
+          <img src="" alt>
+        </figure>
+        <figure>
+          <img src="" alt>
+        </figure>
+        <figure>
+          <img src="" alt>
+        </figure>
+        <figure>
+          <img src="" alt>
+        </figure>
+      </figure>
+    </div>
+    </div>
+
+<br>
+<hr class="section-divider">
 
 <div class="specific-content">
     <div class="content-wrapper">
@@ -52,21 +77,51 @@
 
 
 
+<hr class="section-divider"><br>
  
- <div class="gallery-content">
-        <div id="gallery-container"> </div>
-
-        
-  <div class="header"> Latest Sketches  </div>
-          <div class="image-container" id="image-container"> </div>
+  <div class="gallery-content">
+     
+        <div class="header"> Sketch Gallary  </div>
+      
   </div>
-    
-
-
-  </div>
+<!-------------------------------------------------------------------------------------------->
+<div class="gallary">
+    <div class="text">
+    </div>
+    <div class="image image1">
+      <img src= " ">
+    </div>
+    <div class=" image image2">
+      <img src="">
+    </div>
+    <div class="image image3">
+      <img src="">
+    </div>
+    <div class="image image4">
+      <img src="">
+    </div>
+    <div class="image image5">
+      <img src="">
+    </div>
+    <div class="image image6">
+      <img src="">
+    </div>
+    <div class="image image7">
+      <img src="">
+    </div>  
+    <div class="image image8">
+      <img src= "">
+    </div>
 </div>
 
+<!-------------------------------------------------------------------------------------------->
 
+
+
+
+
+<!----------------------------------------------------Footer Content--------------------------------->
+ </div>
   <footer>
         <div class="social-icons">
             <a href="https://www.facebook.com/people/Pooja-N-G/100093723417007/" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -74,19 +129,13 @@
             <a href="https://www.instagram.com/sketchy_orlov" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/@SketchyOrlov22" target="_blank"><i class="fab fa-youtube"></i></a>
             <a href="https://wa.me/+917338547566?text=I'd%20like%20to%20order%20a%20sketch" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <!-- Add more social icons as needed -->
         </div>
         <br>
         <p>&copy; 2023 Sketchy Orlov. All rights reserved.</p><br>
         <p>Developed with ❤️ </p>
-
-    </footer>
-
-
-
+  </footer>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
   <script  src="./script/script.js"></script>
 
 </body>
-
 </html>
