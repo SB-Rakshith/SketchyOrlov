@@ -40,6 +40,7 @@ h2 {
   position: sticky;
   top: 0;
   background-color: #fff;
+   z-index: 1000;
 }
 
 .grad-bar {
@@ -59,13 +60,13 @@ h2 {
   align-items: center;
   height: 60px;
   overflow: hidden;
-  background-color: #ffffff; /* Set your desired background color */
+  background-color: #fff; /* Set your desired background color */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Customize the shadow values as per your preference */
-  /* Add other styles like positioning, alignment, etc. */
+ z-index: 1;  /* Add other styles like positioning, alignment, etc. */
 }
 
 .navbar img {
-  height: 40px;
+  height: 55px;
   width: auto;
   justify-self: start;
   margin-left: 20px;
@@ -83,7 +84,7 @@ h2 {
 
 
 .nav-item a {
-  color: #000;
+  color: white;
   font-size: 16px;
   font-family: 'Lato', 'Arial', sans-serif;
   font-weight: 400;
@@ -91,31 +92,44 @@ h2 {
   transition: color 0.3s ease-out;
 }
 
-.nav-item a:hover {
+
+.nav-item a {
+  color: #000;
+  font-size: 16px;
+  font-family: 'Lato', 'Arial', sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease-out;
+}
+
+.nav-item a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: transparent; /* Initially transparent */
+  position: absolute;
+  bottom: -5px; /* Position the underline below the text */
+  left: 0;
+  transition: width 0.3s ease-out, background-color 0.3s ease-out; /* Add transitions */
+}
+
+.nav-item a:hover,
+.nav-item.active a { /* Apply the same styles for the active element */
   color: #3498db;
 }
 
-.nav-item.active a,
-.nav-item a:hover {
-  color: #3498db; /* Change the color for active and hover state */
+.nav-item a:hover::after,
+.nav-item.active a::after { /* Apply the same styles for the active element */
+  width: 100%;
+  background-color: #3498db;
 }
+
 
 /* SECTIONS */
 
-.headline {
-  width: 100%;
-  min-height: auto;
-  height: 350px; /* Set an initial height for the header image */
-  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-size: cover;
-  background-position: center;
-  ;
 
-
-}
 .features {
   width: 100%;
   background-color: #f1f1f1;
@@ -240,9 +254,8 @@ h2 {
   }
 }
 
-/* Media Queries */
 
-  /* Mobile Devices - Phones/Tablets */
+/*--------------------Mobile Screeen ------------------------------------------*/
 
 @media only screen and (max-width: 720px) { 
   .features {
@@ -271,7 +284,7 @@ h2 {
   align-items: center;
   height: 60px;
   overflow: hidden;
-  background-color: #ffffff; /* Set your desired background color */
+  background-color: #fff; /* Set your desired background color */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Customize the shadow values as per your preference */
   /* Add other styles like positioning, alignment, etc. */
 }
@@ -300,7 +313,26 @@ h2 {
   
   .navbar li a {
     font-size: 1rem;
+    position: relative ;
   }
+  .navbar li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: width 0.3s ease-out, background-color 0.3s ease-out;
+  }
+
+  .navbar li a:hover::after,
+  .navbar li.active a::after {
+    width: 100%;
+    background-color: #3498db;
+  }
+
    
   .menu-toggle, .bar {
     display: block;
@@ -312,13 +344,7 @@ h2 {
 }
   
   /* SECTIONS */
-.headline {
-height: 200px; 
-background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-    
+
   .feature-container p {
     margin-bottom: 25px;
   }
@@ -396,72 +422,7 @@ footer p {
 /* ---------------------------------- Style for the sketches-------------------*/
 
 
-.gallery-content {
-    /* Define styles for the container if needed */
-}
-
-/* Target elements within the "gallery.html" section */
-.gallery-content .header {
-    background-color:  whitesmoke;
-    padding: 10px 0;
-    text-align: center;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 24px; /* Increased font size */
-    color:  #ff9900; /* Text color */
-
-}
-
-.gallery-content .header h1 {
-    font-size: 36px;
-    margin: 0;
-}
 
 
-.gallery-content .image-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
-.gallery-content .image {
-    margin: 20px;
-    max-width: 400px; /* Maximum width of 300px */
-    max-height: 4000px; /* Maximum height of 300px */
-    border: 2px solid #b3b3af; 
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.gallery-content .image:hover {
-    transform: scale(1.05); /* Adjust the scale factor as needed */
-    transition: transform 0.3s ease; /* Add a smooth transition effect */
-}
-
-
-/* Add a media query for mobile screens */
-@media screen and (max-width: 768px) {
-    .gallery-content .image {
-        margin: 5px;
-        max-width: 120px; /* Adjust the maximum width for smaller screens */
-        max-height: 120px; /* Adjust the maximum height for smaller screens */
-
-    }
-    .gallery-content .header {
-    background-color:  whitesmoke;
-    color: #ff9900; ;
-    padding: 20px 0;
-    text-align: center;
-    
-}
-
-
-}
-
-
-
-/* ---------------------------------- Style for the sketches ends-------------------*/
 
 
