@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', 'Arial', sans-serif;
+  font-family: Hack, monospace;
 }
 
 /* HEADINGS */
@@ -86,7 +86,7 @@ h2 {
 .nav-item a {
   color: white;
   font-size: 16px;
-  font-family: 'Lato', 'Arial', sans-serif;
+  font-family: "monospace" sans-serif;
   font-weight: 400;
   text-decoration: none;
   transition: color 0.3s ease-out;
@@ -96,7 +96,7 @@ h2 {
 .nav-item a {
   color: #000;
   font-size: 16px;
-  font-family: 'Lato', 'Arial', sans-serif;
+  font-family:"monospace" sans-serif;
   font-weight: 400;
   text-decoration: none;
   position: relative;
@@ -116,18 +116,23 @@ h2 {
 }
 
 .nav-item a:hover,
-.nav-item.active a { /* Apply the same styles for the active element */
+.nav-item.activenav a { /* Apply the same styles for the active element */
   color: #3498db;
 }
 
 .nav-item a:hover::after,
-.nav-item.active a::after { /* Apply the same styles for the active element */
+.nav-item.activenav a::after { /* Apply the same styles for the active element */
   width: 100%;
   background-color: #3498db;
 }
 
 
-/* SECTIONS */
+.section-divider {
+  margin: 0px auto; /* Adjust the margin as needed to control the spacing around the line */
+  border: none;
+  border-top: 1px solid #ccc; /* Adjust the color and style of the line as desired */
+  width: 80%; /* Adjust the width of the line as needed */
+}
 
 
 .features {
@@ -252,6 +257,46 @@ h2 {
   100% {
     background-position: 0% 50%
   }
+}
+
+.whats-float {
+    position: fixed;
+    transform:translate(108px,0px);
+    top:75%;
+    right:0;
+    width:150px;
+    overflow: hidden;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 10px 0 0 10px;
+    z-index: 10;
+    transition: all 0.5s ease-in-out;
+    vertical-align: middle
+}
+.whats-float a span {
+    color: white;
+    font-size: 15px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    position: absolute;
+    line-height: 16px;
+    font-weight: bolder;
+}
+
+.whats-float i {
+    font-size: 30px;
+    color: white;
+    line-height: 30px;
+    padding: 10px;
+    transform:rotate(0deg);
+    transition: all 0.5s ease-in-out;
+    text-align:center;
+
+}
+
+.whats-float:hover {
+    color: #FFFFFF;
+    transform:translate(0px,0px);
 }
 
 
