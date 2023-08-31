@@ -1,3 +1,40 @@
+.single-review {
+  -webkit-box-shadow: 0 0.313rem 0.875rem var(--secondary-l-color);
+          box-shadow: 0 0.313rem 0.875rem var(--secondary-l-color);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.single-review .card-top {
+  position: relative;
+}
+
+.single-review .quot-icon {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.single-review .reviewer {
+  position: relative;
+}
+
+.single-review .reviewer::after {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  bottom: calc(100% - 10px);
+  left: 15%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.single-review:hover {
+  -webkit-box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125);
+          box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125);
+}
 #loader-wrapper {
   top: 0;
   left: 0;
@@ -69,12 +106,6 @@ figure.slider img {
   height: auto; }
 
 /*--------------------------------------------*/
-.section-divider {
-  margin: 0px auto; /* Adjust the margin as needed to control the spacing around the line */
-  border: none;
-  border-top: 1px solid #ccc; /* Adjust the color and style of the line as desired */
-  width: 80%; /* Adjust the width of the line as needed */
-}
 
 /* Style for the specific content container */
 .specific-content {
@@ -110,7 +141,7 @@ figure.slider img {
 
 /* Style for the unordered list within the specific content */
 .specific-content ul {
-    list-style: disc; /* Remove list bullets */
+    list-style: circle; /* Remove list bullets */
     padding-left: 0; /* Reset left padding to 0 */
     text-align: left; /* Left align text within the list */
     margin-top: 15px; /* Add space between title and list */
@@ -118,6 +149,7 @@ figure.slider img {
 
 /* Style for list items within the specific content */
 .specific-content li {
+  font-family: monospace;
     margin-bottom: 15px; /* Space between list items */
     font-size: 16px; /* Font size for list items */
     color: #555; /* Text color for list items */
@@ -306,3 +338,50 @@ figure.slider img {
 
 /*------------------------------------------------------------------------------Reviews Carsoul--------------------------*/
 
+.single-review {
+  -webkit-box-shadow: 0 0.313rem 0.875rem var(--secondary-l-color);
+          box-shadow: 0 0.313rem 0.875rem var(--secondary-l-color);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.single-review .card-top {
+  position: relative;
+}
+
+.single-review .quot-icon {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.single-review .reviewer {
+  position: relative;
+}
+.single-review p  {
+ color: black;
+}
+.section-heading  p  {
+ color: black;
+}
+.single-review text-align{
+ text-align: left;
+}
+
+
+.single-review .reviewer::after {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  bottom: calc(100% - 10px);
+  left: 15%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.single-review:hover {
+  -webkit-box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125);
+          box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125);
+}
