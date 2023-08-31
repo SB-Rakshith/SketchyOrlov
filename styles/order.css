@@ -1,12 +1,10 @@
-
-
 .form-container {
-    max-width: 80%;
+    max-width: 85%;
     margin: 20px auto; /* Added margin top and bottom, auto for horizontal centering */
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 0;
 }
 
 h2 {
@@ -279,4 +277,141 @@ h2 {
     }
 }
 
+.titlebar .header {
+    
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 24px; /* Increased font size */
+    color:  limegreen; /* Text color */
 
+}
+
+.titlebar .header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+.specific-content {
+    background-color: white; /* White background */
+    padding: 20px; /* Padding around the specific content */
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px 0; /* Margin above and below the specific content */
+    text-align: left; /* Center align all text */
+    z-index: 1; /* Lower z-index to keep it below the navbar */
+}
+/* Style for the content wrapper */
+.content-wrapper {
+    margin: 0 auto; /* Center the content */
+    max-width: 85%; /* Maximum width of the content */
+    padding: 0 20px; /* Add margin on left and right */
+}
+
+/* Style for the title (first line) */
+.title {
+    font-family: monospace;
+    font-size: 24px; /* Increased font size */
+    color: #333; /* Text color */
+    margin-bottom: 15px; /* Space below the title */
+    font-weight: bold;
+}
+
+/* Style for highlighted text */
+.highlight-text {
+    font-family: monospace;
+    color: #8F3A84; /* Highlighted text color */
+    font-weight: bold; /* Bold font weight */
+}
+
+/* Style for the unordered list within the specific content */
+.specific-content ul {
+    list-style: none; /* Remove list bullets */
+    padding-left: 0; /* Reset left padding to 0 */
+    text-align: left; /* Left align text within the list */
+    margin-top: 15px; /* Add space between title and list */
+}
+
+/* Style for list items within the specific content */
+.specific-content li {
+    margin-bottom: 15px; /* Space between list items */
+    font-family:Hack, monospace ;
+    font-size: 16px; /* Font size for list items */
+    color: #555; /* Text color for list items */
+    text-align: left; /* Left align text within li elements */
+}
+
+
+/* Style for links within the specific content */
+.specific-content  a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #4285f4; /* Link color */
+    font-weight: bold; /* Bold font weight for links */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.errorcont p {
+  font-family:  hack , monospace;
+  font-size: 14px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: black;
+}
+
+
+
+@media screen and (max-width: 768px) {
+ /* Style for the specific content container */
+.specific-content {
+    background-color: white; /* White background */
+    padding: 10px; /* Padding around the specific content */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px 0; /* Margin above and below the specific content */
+    text-align: center; /* Center align all text */
+    z-index: 1; /* Lower z-index to keep it below the navbar */
+}   
+/* Style for the content wrapper */
+.content-wrapper {
+    margin: 0 auto; /* Center the content */
+    max-width: 100%; /* Maximum width of the content */
+    padding: 0 20px; /* Add margin on left and right */
+}
+
+/* Style for the title (first line) */
+.title {
+    font-size: 16px; /* Increased font size */
+    font-family: monospace;
+    color: #333; /* Text color */
+    margin-bottom: 15px; /* Space below the title */
+    font-weight: bold;
+}
+.specific-content li {
+    margin-bottom: 10px; /* Space between list items */
+    font-size: 10px; /* Font size for list items */
+    font-weight: bold;
+    color: #555; /* Text color for list items */
+    text-align: left; /* Left align text within li elements */
+}
+}
+
+/*------------------------------------------------------------------------------------------------Art slider----------------------*/
+
+.container{
+    margin: 10px   ;
+}
+.container h2 { font-size: 30px; margin: 50px 0 50px; text-align: center;}
+.slideshow-container { max-width: 1000px; position: relative; margin: auto; margin-bottom: 10px;}
+.slideshow-controller { text-align: center; margin-bottom: 50px;}
+.mySlides { display: none;}
+.mySlides img { }
+
+.dot { cursor:pointer; height: 8px; width: 8px; margin: 0 4px; background: #d9d9d9; border-radius: 50%; display: inline-block; transition: background-color .5s ease;}
+.active, .dot:hover { background-color: #c7c7c7;}
+.fade { -webkit-animation-name: fade; -webkit-animation-duration: 1.5s; animation-name: fade; animation-duration: 1.5s;}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
