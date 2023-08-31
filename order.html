@@ -27,17 +27,71 @@
                 </div>
                 <ul class="nav no-search">
                     <li class="nav-item "><a href="index.html">Home</a></li>
-                    <li class="nav-item active order "><a href="#">Order Portrait</a></li>
+                    <li class="nav-item activenav order "><a href="#">Order Portrait</a></li>
                     <li class="nav-item  "><a href="about.html">About us</a></li>
                     <li class="nav-item "><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
-    </div>
-    <!-- Header ends -->
+     <!-- Header ends -->
+<div class="titlebar">
+        <div class="header" style="color: hotpink;">Order Your Personalized Sketch/Portrait </div>
+</div>
 
+<hr class="section-divider" style="width:50%"><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="slideshow-container">
+                   <div class="mySlides fade">
+                    <img src="https://drive.google.com/uc?export=view&id=1cpgpccEaLY2xXbLrz9xi5DFzO_TkOoSv" style="width:100%"> 
+                </div>
+                <div class="mySlides fade">
+                    <img src="https://drive.google.com/uc?export=view&id=10b4yw2X6Bx3Z_oSFfpO1TkhHkIC3tmAy" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="1.png" style="width:100%">
+                </div>
+            </div>
+            <div class="slideshow-controller">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span>     
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<hr class="section-divider" ><br>
+
+<div class="titlebar">
+        <div class="header" style="background-color:  whitesmoke;">How to place an order?  </div>
+</div>
+
+<div class="specific-content">
+    <div class="content-wrapper">
+        <strong class="title"><span class="highlight-text">Steps: </span></strong>
+        <ul>
+            <li><a>Step 1: &nbsp;</a> Select your preferred Art Type, Size, and provide any other necessary details.</li>
+            <li><a>Step 2: &nbsp;</a> Please complete your personal details and proceed with the payment using any UPI app of your choice. </li>
+            <li><a>Step 3: &nbsp;</a> Kindly upload the sketch photo, a screenshot of the payment, and any additional details</li>
+            <li><a>Step 4: &nbsp;</a> Please review your details, click the 'Confirm' button, and patiently wait for the success notification.</li>
+            <li><a>Step 4: &nbsp;</a> We'll send you a confirmation email within 24hrs as soon as we've verified your payment and order information."</li>
+
+            <li><span style="color: red;">*</span>&nbsp;If you facing any error while confirming the order <a href="https://wa.me/+917338547566?text=I'm%20facing%20an%20error%20while%20placeing%20an%20order." style="color: #FF0000; letter-spacing: 2px; font-family: monospace;">Click here</a></li>
+        </ul>
+    </div>
+</div>
+<hr class="section-divider" ><br>
+
+
+<!-------------------------------------------------------------------------------Order form----------------------------------------->
+<div class="titlebar">
+        <div class="header" style="background-color: whitesmoke; color: purple;">Order Form! </div>
+</div>
     <div class="form-container">
-        <h2>Order Portrait Art</h2>
        <form id="orderForm" enctype="multipart/form-data">
         <!-- Sketch Details Section -->
         <div class="skecthDetailsSection" id="sketchDetailsSection">
@@ -97,6 +151,7 @@
             <div class="form-group" id="frameTypeContainer" style="display: none;">
                     <label for="frameType">Type of frame:<span style="color: red;">*</span></label>
                     <select id="frameType" name="frameType">
+                        <option value="Not Selected">Select</option>
                         <option value="Fiber">Fiber</option>
                         <option value="Glass">Glass</option>
                     </select>
@@ -193,7 +248,7 @@
                 <input type="text" id="specialInstructions" rows="4" name="specialInstructions" >
             </div>
             <div class="form-group">
-                 <label for="agreeToShowcase">Do you agree for the concert to showcase the sketch on the website?<span style="color: red;">*</span></label>
+                 <label for="agreeToShowcase">Do you agree for the consent to showcase the sketch on the website?<span style="color: red;">*</span></label>
                 <select id="agreeToShowcase" name="agreeToShowcase" required>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -209,23 +264,30 @@
         <button type="submit" id="submitButton" style="display: none;">Confirm Order</button>
 </div>
     </div>
+    <div class="errorcont">
+    <p><span style="color: red;">*</span>&nbsp;If you facing any error while confirming the order <a href="https://wa.me/+917338547566?text=I'm%20facing%20an%20error%20while%20placeing%20an%20order." style="color: #FF0000; letter-spacing: 2px; font-size:12px;">Click here</a></div>
     </div>
     </form>
     </div>
+<hr class="section-divider" ><br>
+<!----------------------------------------------Whatsapp Floating---------------------------------------------->
 
-
+<div class="whats-float">
+    <a href="https://wa.me/+917338547566?text=I'd%20like%20to%20order%20a%20sketch"
+       target="_blank">
+        <i class="fab fa-whatsapp"></i><span>WhatsApp<br><small>Chat with us</small></span>
+    </a>
+</div>
 
     <!-- Footer Starts -->
     <footer>
         <div class="social-icons">
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/+917338547566?text=I'd%20like%20to%20order%20a%20sketch" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-            <!-- Add more social icons as needed -->
+            <a href="https://www.facebook.com/people/Pooja-N-G/100093723417007/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/SketchyOrlov" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/sketchy_orlov" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@SketchyOrlov22" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
+
         <br>
         <p>&copy; 2023 Sketchy Orlov. All rights reserved.</p><br>
         <p>Developed with ❤️</p><br>
@@ -233,6 +295,8 @@
     <!-- Footer ends -->
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jssor-slider/27.1.0/jssor.slider.min.js'></script>
     <script src="./script/script.js"></script>    
      <script src="./script/order.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
