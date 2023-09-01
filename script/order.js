@@ -12,33 +12,69 @@ function updateTotalAmount() {
     let totalAmount = 0; // Initial amount
 
     if (numberOfFaces === "Single") {
-        totalAmount += 999; // Add additional amount based on selection
+        totalAmount += 900; // Add additional amount based on selection
     } else if (numberOfFaces === "Two") {
-        totalAmount += 1199; // Add additional amount based on selection
+        totalAmount += 1000; // Add additional amount based on selection
     }
     else if (numberOfFaces === "Multi") {
-        totalAmount += 1299; // Add additional amount based on selection
+        totalAmount += 1300; // Add additional amount based on selection
     }
+
 
     if (artType === "Realistic Charcoal Sketch") {
         totalAmount += 0; // Add additional amount based on selection
     } else if (artType === "Realistic Graphite Sketch") {
-        totalAmount += 299; // Add additional amount based on selection
-    } else if (artType === "Artist Choice") {
-        totalAmount += 200; // Add additional amount based on selection
+        totalAmount += 0; // Add additional amount based on selection
+    } else if (artType === "Realistic Pencil Sketch") {
+        totalAmount += 0; // Add additional amount based on selection
     } else if (artType === "Colorpencil Sketch") {
-        totalAmount += 799; // Add additional amount based on selection
+        totalAmount += 0; // Add additional amount based on selection
     } else if (artType === "Charcoal Sketch on Wood") {
-        totalAmount += 1999; // Add additional amount based on selection
+        totalAmount += 0; // Add additional amount based on selection
     }
 
-    if (artSize === "A4   (12 x 8 inches, Delivery in 5days)") {
-        totalAmount += 0; // No additional cost for this size
-    } else if (artSize === "A3   (12 x 18 inches, Delivery in 10days)") {
-        totalAmount += 499; // Add additional amount based on selection
-    } else if (artSize === "A5   (12 x 8 inches, Delivery in 6days)") {
-        totalAmount += 999; // Add additional amount based on selection
-    }
+     if (numberOfFaces === "Single") {
+           
+       
+        if (artSize === "A5 (8 x 6 inches, Delivery in 6days))") {
+            totalAmount += 0; // No additional cost for this size
+        } else if (artSize === "A4 (12 x 8 inches, Delivery in 5days)") {
+            totalAmount += 300; // Add additional amount based on selection
+        } else if (artSize === "A3 (17 x 12 inches, Delivery in 10days)") {
+            totalAmount += 700; // Add additional amount based on selection
+        } else if (artSize === "A2 (24 x 17 inches, Delivery in 10days)") {
+            totalAmount += 2100; // Add additional amount based on selection
+        }
+     }
+
+     if (numberOfFaces === "Two") {
+           
+       
+        if (artSize === "A5 (8 x 6 inches, Delivery in 6days))") {
+            totalAmount += 100; // No additional cost for this size
+        } else if (artSize === "A4 (12 x 8 inches, Delivery in 5days)") {
+            totalAmount += 500; // Add additional amount based on selection
+        } else if (artSize === "A3 (17 x 12 inches, Delivery in 10days)") {
+            totalAmount += 1200; // Add additional amount based on selection
+        } else if (artSize === "A2 (24 x 17 inches, Delivery in 10days)") {
+            totalAmount += 3000; // Add additional amount based on selection
+        }
+     }
+       if (numberOfFaces === "Multi") {
+           
+       
+        if (artSize === "A5 (8 x 6 inches, Delivery in 6days))") {
+            totalAmount += 100; // No additional cost for this size
+        } else if (artSize === "A4 (12 x 8 inches, Delivery in 5days)") {
+            totalAmount += 500; // Add additional amount based on selection
+        } else if (artSize === "A3 (17 x 12 inches, Delivery in 10days)") {
+            totalAmount += 1200; // Add additional amount based on selection
+        } else if (artSize === "A2 (24 x 17 inches, Delivery in 10days)") {
+            totalAmount += 3000; // Add additional amount based on selection
+        }
+     }
+
+
 
     if (frame === "Yes") {
     if (frameType === "Fiber") {
@@ -65,7 +101,18 @@ document.getElementById("sizeOption").addEventListener("change", updateTotalAmou
 // Call the function initially to set the default total amount
 updateTotalAmount();
 
+//-------------------------------------------------------------------------disable previous days---------------//
+ var today = new Date();
 
+    // Calculate the date two days from today
+    var twoDaysFromToday = new Date();
+    twoDaysFromToday.setDate(today.getDate() + 2);
+
+    // Convert the twoDaysFromToday date to a string in YYYY-MM-DD format
+    var minDate = twoDaysFromToday.toISOString().split('T')[0];
+
+    // Set the minimum attribute of the date input to disable dates before two days from today
+    document.getElementById('deliveryDate').setAttribute('min', minDate);
 //------------------------------------------------------------------------PAYMENT AND QR ------------------
 
 
@@ -320,7 +367,7 @@ function handleFileUploads(url, form) {
 var frameSelect = document.getElementById("frame");
 
 // Get the container for frame type
-var frameTypeContainer = document.getElementById("frameTypeContainer");
+var frameTypeContainer = document.getElementById("extracharges");
 
 // Add an event listener to the frame select element
 frameSelect.addEventListener("change", function () {
