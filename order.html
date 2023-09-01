@@ -51,7 +51,7 @@
                     <img src="https://drive.google.com/uc?export=view&id=10b4yw2X6Bx3Z_oSFfpO1TkhHkIC3tmAy" style="width:100%">
                 </div>
                 <div class="mySlides fade">
-                    <img src="1.png" style="width:100%">
+                    <img src="https://drive.google.com/uc?export=view&id=1aZ1Tbh1Z9oxySTq7BSCRJ0E32-lcu2ZK" style="width:100%">
                 </div>
             </div>
             <div class="slideshow-controller">
@@ -110,11 +110,11 @@
                 <label for="artType"> Art Type:<span style="color: red;">*</span></label>
                 <select id="artType" name="artType" required>
                     <option value="" disabled="" selected="">Select Artwork Type</option>
-                    <option value="Realistic Charcoal Sketch">Realistic Charcoal Sketch</option>
-                    <option value="Realistic Graphite Sketch" >Realistic Graphite Sketch</option>
-                    <option value="Artist Choice" >Artist Choice</option>
-                    <option value="Colorpencil Sketch"disabled>Colorpencil Sketch</option>
-                    <option value="Charcoal Sketch on Wood"disabled>Charcoal Sketch on Wood</option>
+                    <option value="Realistic Pencil Sketch" >Realistic Pencil Sketch</option>
+                    <option value="Realistic Charcoal Sketch"disabled>Realistic Charcoal Sketch(Coming Soon)</option>
+                    <option value="Realistic Graphite Sketch" disabled>Realistic Graphite Sketch(Coming Soon)</option>
+                    <option value="Colorpencil Sketch"disabled>Colorpencil Sketch(Coming Soon)</option>
+                    <option value="Charcoal Sketch on Wood"disabled>Charcoal Sketch on Wood(Coming Soon)</option>
                     </select>
                 </div>
 
@@ -122,9 +122,11 @@
                     <label for="sizeOption">Artwork Size:<span style="color: red;">*</span></label>
                     <select id="sizeOption" name="sizeOption" required >
                         <option value="" disabled="" selected="">Select Artwork Size</option>
-                        <option value="A4   (12 x 8 inches, Delivery in 5days)">A4  (12 x 8 inches, Delivery in 5days)</option>
-                        <option value="A3   (12 x 18 inches, Delivery in 10days)">A3    (12 x 18 inches, Delivery in 10days)</option>
-                        <option value="A5   (12 x 8 inches, Delivery in 6days)">A5  (12 x 8 inches, Delivery in 6days)</option>
+                        <option value="A5 (8 x 6 inches, Delivery in 6days)">A5 (8 x 6 inches, Delivery in 6days)</option>
+                        <option value="A4 (12 x 8 inches, Delivery in 5days)">A4 (12 x 8 inches, Delivery in 5days)</option>
+                        <option value="A3 (17 x 12 inches, Delivery in 10days)">A3 (17 x 12 inches, Delivery in 10days)</option>
+                        <option value="A2 (24 x 17 inches, Delivery in 10days)">A2 (24 x 17 inches, Delivery in 10days)</option>
+                        <option value="A1 (Not Available)" disabled>A1 (Not Available)</option>
                     </select>
                 </div>
             </div>
@@ -143,22 +145,26 @@
                     <label for="frame">Do you want to frame for this sketch?<span style="color: red;">*</span></label>
                     <select id="frame" name="frame" required>
                         <option value="" disabled="" selected="">Select</option>
-                        <option value="Yes">Yes</option>
+                        <option value="Yes">Yes (Extra Charges apply)</option>
                         <option value="No">No</option>
                     </select>
                 </div>
             
-            <div class="form-group" id="frameTypeContainer" style="display: none;">
+               <div class="form-group" id="frameTypeContainer" style="display: none;">
                     <label for="frameType">Type of frame:<span style="color: red;">*</span></label>
                     <select id="frameType" name="frameType">
-                        <option value="Not Selected">Select</option>
+                        <option value="    ">Select</option>
                         <option value="Fiber">Fiber</option>
                         <option value="Glass">Glass</option>
                     </select>
                 </div>
           </div>
+            <div class="form-group" id="extracharges" style="display: none;">
+               <span  class = "center-label" style="color:red;" > *Additional charges applied for frame; please contact us after form submisson to inquire about pricing.</span>
+            </div>
+      
             <div class="form-group">
-                <label id="totalPriceLabel" for="totalPrice" name="totalPrice" class="center-label">Total Price (Include of All Taxes)</label>
+                <label id="totalPriceLabel" for="totalPrice" name="totalPrice" class="center-label">Total Price (Include of All Taxes) </label>
                 <p id="totalPriceValue" class="error-message">&#8377;0</p>
             </div>
       
@@ -244,7 +250,7 @@
         </div>
         <div class="form-row">
             <div class="form-group">
-                <label for="specialInstructions">Special Instructions (Optional):</label>
+                <label for="specialInstructions">Special Instructions to Artist (Optional):</label>
                 <input type="text" id="specialInstructions" rows="4" name="specialInstructions" >
             </div>
             <div class="form-group">
