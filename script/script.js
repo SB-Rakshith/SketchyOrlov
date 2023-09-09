@@ -16,30 +16,19 @@ async function fetchImageURLsAndUpdateImages() {
   const sheetId = '1hMf8jd8vvjvzvniDNwKa3pyWiOhMsuE7tnSHjwV4d48';
   const sheetName = 'Header Image';
 
-  // Check if the data is already cached in localStorage
-  const cachedData = localStorage.getItem('imageURLs');
-  if (cachedData) {
-    // Use cached data
-    const imageURLs = JSON.parse(cachedData);
+  // Fetch data from the Google Sheet
+  const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
+  try {
+    const response = await fetch(sheetURL);
+    const data = await response.json();
+
+    // Assuming your Google Sheet has a single column of image URLs
+    const imageURLs = data.values.map(row => row[0]);
+
+    // Update the existing images
     updateImages(imageURLs);
-  } else {
-    // Fetch data from the Google Sheet
-    const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
-    try {
-      const response = await fetch(sheetURL);
-      const data = await response.json();
-
-      // Assuming your Google Sheet has a single column of image URLs
-      const imageURLs = data.values.map(row => row[0]);
-
-      // Store the fetched data in localStorage for caching
-      localStorage.setItem('imageURLs', JSON.stringify(imageURLs));
-
-      // Update the existing images
-      updateImages(imageURLs);
-    } catch (error) {
-      console.error('Error fetching image URLs:', error);
-    }
+  } catch (error) {
+    console.error('Error fetching image URLs:', error);
   }
 }
 
@@ -102,57 +91,39 @@ function convertDriveURL(url) {
     }
 }
 
-// Function to fetch data from the Google Sheet using the API and cache it
-async function fetchDataAndCache() {
-  // Check if the data is already cached in localStorage
-  const cachedData = localStorage.getItem('sketchImageData');
-  
-  if (cachedData) {
-    // Use cached data
-    const imageURLs = JSON.parse(cachedData);
-    updateSketchImages(imageURLs);
-  } else {
+// Function to fetch data from the Google Sheet using the API and update images
+async function fetchDataAndUpdateImages() {
     // Fetch data from the Google Sheet
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${googleSheetId}/values/${sheetName}!A2:A?key=${apiKey}`;
-    
+
     try {
-      const response = await fetch(url);
-      const data = await response.json();
+        const response = await fetch(url);
+        const data = await response.json();
 
-      // Extract image URLs from the API response and convert them
-      const imageURLs = data.values.flat().map(convertDriveURL);
+        // Extract image URLs from the API response and convert them
+        const imageURLs = data.values.flat().map(convertDriveURL);
 
-      // Cache the fetched data in localStorage
-      localStorage.setItem('sketchImageData', JSON.stringify(imageURLs));
-
-      // Update the sketch images
-      updateSketchImages(imageURLs);
+        // Update the sketch images
+        updateSketchImages(imageURLs);
     } catch (error) {
-      console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error);
     }
-  }
 }
 
 // Function to update the sketch images on the webpage
 function updateSketchImages(imageURLs) {
-  // Update the src attributes of the img elements based on their class names
-  for (let i = 0; i < imageURLs.length; i++) {
-    const className = `image${i + 1}`;
-    const imgElement = document.querySelector(`.${className} img`);
-    
-    if (imgElement) {
-      imgElement.src = imageURLs[i];
+    // Update the src attributes of the img elements based on their class names
+    for (let i = 0; i < imageURLs.length; i++) {
+        const className = `image${i + 1}`;
+        const imgElement = document.querySelector(`.${className} img`);
+
+        if (imgElement) {
+            imgElement.src = imageURLs[i];
+        }
     }
-  }
 }
 
-// Call the function to fetch and cache sketch image URLs
-fetchDataAndCache();
-
-
-// ----------------------------------------------Sketch gallery ends ---------------------------------------------//
-
+// Call the function to fetch and update sketch image URLs when the page loads
 window.addEventListener('load', () => {
-  fetchDataAndCache();
+    fetchDataAndUpdateImages();
 });
-
